@@ -683,16 +683,56 @@
 
     /* Cartões que exibem o logo de um jogo */
     .game-art.has-image {
-        background: transparent;
-      }
+      background: transparent;
+    }
 
-      .game-art.has-image::after {
-          display: none;
+    .game-art.has-image::after {
+      display: none;
+    }
+
+    .game-art.has-image img {
+      z-index: 0;
+    }
+
+    .logo-mark {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        min-height: 42px;
+        flex-shrink: 0;
+        overflow: hidden;
+         position: relative;
+        border-radius: 10px;
+    }
+
+    .logo-mark img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+    }
+
+    .dialog-art.has-image {
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .dialog-art.has-image::before,
+    .dialog-art.has-image::after {
+      display: none;
+    }
+
+     .dialog-art.has-image img {
+       display: block;
+       width: 100%;
+       height: 100%;
+          object-fit: contain;
+          position: relative;
+          z-index: 1;
         }
 
-        .game-art.has-image img {
-            z-index: 0;
-          }
 
 
     @media (max-width: 760px) {

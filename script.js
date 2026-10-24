@@ -159,10 +159,24 @@ const arrow = document.createElement("span");
     function showDetails(game) {
       dialogContent.replaceChildren();
 
+
       const art = document.createElement("div");
       art.className = "dialog-art";
-      art.style.setProperty("--art-color", game.color);
-      art.textContent = game.glyph;
+
+      if (game.image) {
+          art.classList.add("has-image");
+
+          const image = document.createElement("img");
+          image.src = game.image;
+          image.alt = `Logo de ${game.name}`;
+          image.loading = "lazy";
+
+          art.append(image);
+      } else {
+          art.style.setProperty("--art-color", game.color);
+          art.textContent = game.glyph;
+      }
+
 
       const title = document.createElement("h2");
       title.className = "dialog-title";
