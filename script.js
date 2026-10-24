@@ -24,7 +24,8 @@
         color: "#77501c",
         glow: "#f6c84e",
         downloadUrl: "https://noturnorace.com/baixar/?ref=Felux",
-        sourceName: "Acessar Noturno Race"
+        sourceName: "Acessar Noturno Race",
+        image: "images/noturno-race.png"
       }
     ];
 
@@ -44,18 +45,33 @@
 
       const art = document.createElement("div");
       art.className = "game-art";
+      if (game.image) {
+          art.classList.add("has-image");
+      }
+
       art.style.setProperty("--art-color", game.color);
       art.style.setProperty("--art-glow", game.glow);
 
-      const glyph = document.createElement("span");
-      glyph.className = "game-glyph";
-      glyph.textContent = game.glyph;
+      if (game.image) {
+          const image = document.createElement("img");
+          image.src = game.image;
+          image.alt = `Logo de ${game.name}`;
+          image.loading = "lazy";
+          art.append(image);
+      } else {
+          const glyph = document.createElement("span");
+          glyph.className = "game-glyph";
+          glyph.textContent = game.glyph;
+          art.append(glyph);
+      }
 
       const tag = document.createElement("span");
       tag.className = "game-tag";
-      tag.textContent = game.featured ? "Indicação do Felux" : game.genre;
+      tag.textContent = game.featured
+        ? "Indicação do Felux"
+        : game.genre;
 
-      art.append(glyph, tag);
+      art.append(tag);
 
       const body = document.createElement("div");
       body.className = "game-body";
