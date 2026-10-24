@@ -1,0 +1,1196 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090d">
+  <meta name="description" content="Jogos legais que eu encontro e quero compartilhar com você. Conheça o Felux Gaming.">
+  <title>Felux Gaming — Jogos que valem a pena</title>
+
+  <style>
+    :root {
+      --bg: #09090d;
+      --panel: #121219;
+      --panel-hover: #191923;
+      --border: #2b2935;
+      --text: #f4f1fa;
+      --muted: #a5a1b2;
+      --purple: #c4b5fd;
+      --purple-dark: #8b5cf6;
+      --gold: #f6c84e;
+      --green: #68edb0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1100px, 100% - 40px);
+      margin: auto;
+    }
+
+    header {
+      height: 72px;
+      padding: 0 max(20px, calc((100% - 1100px) / 2));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #09090deF;
+      border-bottom: 1px solid #ffffff0d;
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 39px;
+      height: 39px;
+      border: 1px solid #7659c7;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #33244d, #111117);
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .brand-icon span {
+      color: var(--purple);
+    }
+
+    .brand-name {
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .brand-sub {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 1.5px;
+    }
+
+    .header-link {
+      color: var(--purple);
+      font-size: 13px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 90px 0 30px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      top: 10px;
+      right: -120px;
+      border-radius: 50%;
+      background: #8b5cf61b;
+      filter: blur(50px);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 15px;
+      color: var(--purple);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      position: relative;
+      margin-bottom: 20px;
+      font-size: clamp(45px, 8vw, 78px);
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    h1 span, .about h2 span {
+      color: var(--purple);
+    }
+
+    .hero-description {
+      max-width: 470px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 14px 18px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--purple);
+      color: #171020;
+      font-size: 13px;
+      font-weight: 800;
+      transition: transform .2s, filter .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 75px;
+      color: #777383;
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+
+    .catalog {
+      padding-top: 60px;
+      padding-bottom: 75px;
+      background: #0d0d13;
+      border-top: 1px solid #ffffff0b;
+      border-bottom: 1px solid #ffffff0b;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: clamp(26px, 4vw, 37px);
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .count {
+      padding-bottom: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      height: 52px;
+      padding: 0 15px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--panel);
+      color: var(--muted);
+    }
+
+    .search:focus-within {
+      border-color: var(--purple-dark);
+    }
+
+    .search-icon {
+      font-size: 24px;
+    }
+
+    .search input {
+      width: 100%;
+      min-width: 0;
+      border: 0;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 17px 0 25px;
+    }
+
+    .filter {
+      padding: 8px 15px;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .filter.active {
+      border-color: var(--purple-dark);
+      background: #8b5cf622;
+      color: var(--purple);
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .game-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid #292832;
+      border-radius: 12px;
+      background: var(--panel);
+      transition: transform .2s, border-color .2s;
+    }
+
+    .game-card:hover {
+      transform: translateY(-4px);
+      border-color: #7660a6;
+    }
+
+    .game-art {
+      position: relative;
+      display: flex;
+      align-items: end;
+      min-height: 145px;
+      padding: 14px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 75% 25%, var(--art-glow), transparent 45%),
+        linear-gradient(145deg, var(--art-color), #101016 80%);
+    }
+
+    .game-art::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, #09090de8, transparent 85%);
+    }
+
+    .game-glyph {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      color: #ffffffb0;
+      font-size: 66px;
+      font-weight: 900;
+      transform: rotate(-8deg);
+    }
+
+    .game-tag {
+      position: relative;
+      z-index: 1;
+      padding: 5px 8px;
+      border: 1px solid #ffffff45;
+      border-radius: 5px;
+      background: #09090d77;
+      color: white;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .game-body {
+      padding: 15px;
+    }
+
+    .game-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .game-title-row h3 {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .platform {
+      padding: 4px 7px;
+      border: 1px solid #8b5cf644;
+      border-radius: 5px;
+      background: #8b5cf61c;
+      color: var(--purple);
+      font-size: 9px;
+      white-space: nowrap;
+    }
+
+    .game-description {
+      min-height: 58px;
+      margin-bottom: 13px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .game-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .meta {
+      padding: 5px 7px;
+      border-radius: 5px;
+      background: #1c1b24;
+      color: #b5b1c2;
+      font-size: 10px;
+    }
+
+    .game-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 15px;
+      padding-top: 12px;
+      border-top: 1px solid #292832;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .game-footer span:last-child {
+      color: var(--purple);
+      font-size: 16px;
+    }
+
+    .empty {
+      padding: 40px 0;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .note {
+      margin: 22px 0 0;
+      color: #777383;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    /* Área do Noturno Race e do código de criador */
+    .creator {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 150px;
+      align-items: center;
+      gap: 30px;
+      padding-top: 65px;
+      padding-bottom: 65px;
+      border-bottom: 1px solid #ffffff0d;
+      background: radial-gradient(ellipse at 85% 50%, #f6c84e0c, transparent 45%);
+    }
+
+    .creator h2 {
+      margin-bottom: 14px;
+    }
+
+    .creator-description {
+      max-width: 570px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .creator-description strong {
+      color: var(--gold);
+    }
+
+    .creator-code {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      max-width: 550px;
+      margin: 22px 0;
+      padding: 18px;
+      border: 1px solid #655027;
+      border-radius: 10px;
+      background: #111115;
+    }
+
+    .creator-code-label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+
+    .creator-code strong {
+      display: block;
+      color: var(--gold);
+      font-size: 35px;
+      letter-spacing: 2px;
+    }
+
+    .creator-code small {
+      display: block;
+      max-width: 290px;
+      margin-top: 5px;
+      color: var(--green);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .copy-button {
+      padding: 12px;
+      border: 1px solid #4b4a50;
+      border-radius: 7px;
+      background: #1b1b20;
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .copy-button:hover {
+      border-color: var(--gold);
+    }
+
+    .gold-button {
+      background: var(--gold);
+      color: #211707;
+    }
+
+    .creator-feedback {
+      min-height: 16px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .creator-art {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      width: 145px;
+      height: 190px;
+      border: 1px solid #655027;
+      border-radius: 15px;
+      background: linear-gradient(145deg, #38270e, #111115 75%);
+      color: var(--gold);
+      transform: rotate(2deg);
+    }
+
+    .creator-art strong {
+      font-size: 85px;
+      line-height: 1;
+    }
+
+    .creator-art small {
+      margin-top: 12px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-align: center;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 90px minmax(0, 1fr);
+      align-items: center;
+      gap: 25px;
+      padding-top: 70px;
+      padding-bottom: 70px;
+    }
+
+    .about-icon {
+      display: grid;
+      place-items: center;
+      width: 80px;
+      height: 80px;
+      border: 1px solid #58427c;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #33244d, #111117);
+      font-size: 42px;
+      font-weight: 900;
+    }
+
+    .about p:last-child {
+      max-width: 560px;
+      margin: 15px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 24px max(20px, calc((100% - 1100px) / 2));
+      border-top: 1px solid #ffffff0d;
+      color: #777383;
+      font-size: 11px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    .footer-brand {
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .footer-brand span {
+      color: var(--purple);
+    }
+
+    dialog {
+      width: min(520px, calc(100% - 28px));
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 25px;
+      border: 1px solid #4a405e;
+      border-radius: 14px;
+      background: #111116;
+      color: var(--text);
+    }
+
+    dialog::backdrop {
+      background: #000c;
+      backdrop-filter: blur(4px);
+    }
+
+    .dialog-close {
+      float: right;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--panel-hover);
+      color: white;
+      font-size: 20px;
+    }
+
+    .dialog-art {
+      display: grid;
+      place-items: center;
+      height: 130px;
+      margin-bottom: 20px;
+      border-radius: 9px;
+      background: linear-gradient(145deg, var(--art-color), #101016);
+      color: white;
+      font-size: 65px;
+      font-weight: 900;
+    }
+
+    .dialog-title {
+      margin: 0 0 12px;
+      font-size: 27px;
+    }
+
+    .dialog-description {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .detail {
+      padding: 12px;
+      border-radius: 8px;
+      background: #1b1a22;
+    }
+
+    .detail small, .detail strong {
+      display: block;
+    }
+
+    .detail small {
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .detail strong {
+      font-size: 12px;
+    }
+
+    .source-button {
+      display: block;
+      padding: 14px;
+      border-radius: 8px;
+      background: var(--purple);
+      color: #171020;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .dialog-note {
+      margin: 13px 0 0;
+      color: #858192;
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding-top: 75px;
+      }
+
+      .game-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .game-art {
+        min-height: 120px;
+      }
+
+      .game-body {
+        padding: 12px;
+      }
+
+      .game-title-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .game-description {
+        min-height: 80px;
+      }
+
+      .creator {
+        grid-template-columns: 1fr;
+      }
+
+      .creator-art {
+        display: none;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .container {
+        width: calc(100% - 30px);
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .game-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .game-art {
+        min-height: 155px;
+      }
+
+      .game-title-row {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .game-description {
+        min-height: 0;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .creator-code {
+        padding: 13px;
+        gap: 8px;
+      }
+
+      .creator-code strong {
+        font-size: 30px;
+      }
+
+      .copy-button {
+        padding: 10px 8px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .about-icon {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="brand" href="#" aria-label="Felux Gaming, início">
+      <span class="brand-icon">F<span>×</span></span>
+      <span class="brand-name">
+        FELUX
+        <span class="brand-sub">JOGOS QUE EU INDICO</span>
+      </span>
+    </a>
+
+    <a class="header-link" href="#catalogo">Ver os jogos ↗</a>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <p class="eyebrow">JOGOS PRA CONHECER</p>
+
+      <h1>Jogo bom não<br>precisa ser <span>famoso.</span></h1>
+
+      <p class="hero-description">
+        Eu encontro jogos legais, mostro por que valem a pena
+        e deixo o caminho pra você conhecer também.
+      </p>
+
+      <a class="button" href="#catalogo">Bora encontrar um jogo <span>↓</span></a>
+
+      <div class="hero-bottom">
+        <span>ANDROID · PC</span>
+        <span>FEITO POR FELUX</span>
+      </div>
+    </section>
+
+    <section class="catalog" id="catalogo">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">OLHA ESSES</p>
+            <h2>Bora achar seu próximo jogo.</h2>
+          </div>
+
+          <span class="count" id="count">0 jogos</span>
+        </div>
+
+        <label class="search">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input
+            id="search"
+            type="search"
+            placeholder="Buscar por nome, gênero ou plataforma..."
+            autocomplete="off"
+          >
+        </label>
+
+        <div class="filters" id="filters" aria-label="Filtrar plataforma">
+          <button class="filter active" data-platform="Todos">Todos</button>
+          <button class="filter" data-platform="Android">Android</button>
+          <button class="filter" data-platform="PC">PC</button>
+        </div>
+
+        <div class="game-grid" id="game-grid" aria-live="polite"></div>
+
+        <div class="empty" id="empty" hidden>
+          <h3>Nenhum jogo encontrado</h3>
+          <p>Tenta outro nome ou muda o filtro.</p>
+        </div>
+
+        <p class="note">
+          As informações podem mudar. Confira a fonte oficial,
+          os requisitos e a compatibilidade antes de instalar.
+        </p>
+      </div>
+    </section>
+
+    <section class="creator">
+      <div class="container">
+        <div class="creator">
+          <div>
+            <p class="eyebrow">MINHA INDICAÇÃO</p>
+            <h2>Curte o Noturno Race?</h2>
+
+            <p class="creator-description">
+              Se quiser conhecer o jogo, pode entrar pelo meu link
+              de convite. E, se for recarregar diamantes, meu código
+              de criador é <strong>FELUX</strong>.
+            </p>
+
+            <div class="creator-code">
+              <div>
+                <span class="creator-code-label">MEU CÓDIGO</span>
+                <strong>FELUX</strong>
+                <small>+10% de diamantes para quem usar, conforme as regras do programa.</small>
+              </div>
+
+              <button class="copy-button" id="copy-code" type="button">
+                Copiar código
+              </button>
+            </div>
+
+            <a
+              class="button gold-button"
+              href="https://noturnorace.com/baixar/?ref=Felux"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Conhecer Noturno Race ↗
+            </a>
+
+            <p class="creator-feedback" id="copy-feedback" aria-live="polite">
+              Link de convite do Noturno Race.
+            </p>
+          </div>
+
+          <div class="creator-art" aria-hidden="true">
+            <strong>N</strong>
+            <small>NOTURNO<br>RACE</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about container">
+      <div class="about-icon" aria-hidden="true">F<span>×</span></div>
+
+      <div>
+        <p class="eyebrow">SOBRE O FELUX</p>
+        <h2>Menos enrolação.<br><span>Mais jogo bom.</span></h2>
+
+        <p>
+          Esse cantinho é pra compartilhar jogos que eu acho legais,
+          principalmente aqueles que você talvez não encontrasse sozinho.
+          Viu algo interessante? Manda pra alguém que curte jogar.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="footer-brand" href="#">FELUX<span>×</span></a>
+    <p>Jogo bom é jogo compartilhado.</p>
+    <span>© <span id="year"></span> FELUX</span>
+  </footer>
+
+  <dialog id="game-dialog">
+    <button class="dialog-close" id="close-dialog" aria-label="Fechar">×</button>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <script>
+    /*
+      CATÁLOGO DE JOGOS
+
+      Para adicionar um jogo:
+      1. Copie um objeto do array.
+      2. Cole abaixo do último jogo.
+      3. Altere os dados.
+      4. Separe os objetos com vírgula.
+
+      Use informações verificadas e links oficiais/autorizados.
+    */
+
+    const games = [
+      {
+        id: "noturno-race",
+        name: "Noturno Race",
+        genre: "Corrida",
+        platform: "Android",
+        size: "Confira na página oficial",
+        ads: "Confira no jogo",
+        description:
+          "Um jogo de corrida que vale conhecer. Acesse pelo link de convite do Felux e confira as informações oficiais.",
+        featured: true,
+        glyph: "N",
+        color: "#77501c",
+        glow: "#f6c84e",
+        downloadUrl: "https://noturnorace.com/baixar/?ref=Felux",
+        sourceName: "Acessar Noturno Race"
+      },
+
+      {
+        id: "seu-jogo-aqui",
+        name: "Seu próximo jogo",
+        genre: "Aventura",
+        platform: "PC",
+        size: "A confirmar",
+        ads: "A confirmar",
+        description:
+          "Este é um exemplo provisório. Troque por um jogo real que você queira recomendar.",
+        featured: false,
+        glyph: "✦",
+        color: "#254b4b",
+        glow: "#8de4d2",
+        downloadUrl: "",
+        sourceName: ""
+      }
+    ];
+
+    const grid = document.querySelector("#game-grid");
+    const searchInput = document.querySelector("#search");
+    const count = document.querySelector("#count");
+    const empty = document.querySelector("#empty");
+    const filters = document.querySelector("#filters");
+    const dialog = document.querySelector("#game-dialog");
+    const dialogContent = document.querySelector("#dialog-content");
+
+    let selectedPlatform = "Todos";
+
+    function createCard(game) {
+      const card = document.createElement("article");
+      card.className = "game-card";
+
+      const art = document.createElement("div");
+      art.className = "game-art";
+      art.style.setProperty("--art-color", game.color);
+      art.style.setProperty("--art-glow", game.glow);
+
+      const glyph = document.createElement("span");
+      glyph.className = "game-glyph";
+      glyph.textContent = game.glyph;
+
+      const tag = document.createElement("span");
+      tag.className = "game-tag";
+      tag.textContent = game.featured ? "Indicação do Felux" : game.genre;
+
+      art.append(glyph, tag);
+
+      const body = document.createElement("div");
+      body.className = "game-body";
+
+      const titleRow = document.createElement("div");
+      titleRow.className = "game-title-row";
+
+      const title = document.createElement("h3");
+      title.textContent = game.name;
+
+      const platform = document.createElement("span");
+      platform.className = "platform";
+      platform.textContent = game.platform;
+
+      titleRow.append(title, platform);
+
+      const description = document.createElement("p");
+      description.className = "game-description";
+      description.textContent = game.description;
+
+      const meta = document.createElement("div");
+      meta.className = "game-meta";
+
+      [game.genre, game.ads].forEach(value => {
+        const pill = document.createElement("span");
+        pill.className = "meta";
+        pill.textContent = value;
+        meta.append(pill);
+      });
+
+      const footer = document.createElement("div");
+      footer.className = "game-footer";
+
+      const size = document.createElement("span");
+      size.textContent = game.size;
+
+const arrow = document.createElement("span");
+      arrow.textContent = "↗";
+
+      footer.append(size, arrow);
+      body.append(titleRow, description, meta, footer);
+      card.append(art, body);
+
+      card.tabIndex = 0;
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-label", "Ver detalhes de " + game.name);
+
+      card.addEventListener("click", () => showDetails(game));
+
+      card.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          showDetails(game);
+        }
+      });
+
+      return card;
+    }
+
+    function renderGames() {
+      const query = searchInput.value.trim().toLocaleLowerCase("pt-BR");
+
+      const visibleGames = games.filter(game => {
+        const matchesPlatform =
+          selectedPlatform === "Todos" ||
+          game.platform === selectedPlatform;
+
+        const text = (
+          game.name + " " +
+          game.genre + " " +
+          game.platform + " " +
+          game.description
+        ).toLocaleLowerCase("pt-BR");
+
+        return matchesPlatform && text.includes(query);
+      });
+
+      grid.replaceChildren(...visibleGames.map(createCard));
+      count.textContent =
+        visibleGames.length +
+        (visibleGames.length === 1 ? " jogo" : " jogos");
+
+      empty.hidden = visibleGames.length > 0;
+      grid.hidden = visibleGames.length === 0;
+    }
+
+    function showDetails(game) {
+      dialogContent.replaceChildren();
+
+      const art = document.createElement("div");
+      art.className = "dialog-art";
+      art.style.setProperty("--art-color", game.color);
+      art.textContent = game.glyph;
+
+      const title = document.createElement("h2");
+      title.className = "dialog-title";
+      title.textContent = game.name;
+
+      const description = document.createElement("p");
+      description.className = "dialog-description";
+      description.textContent = game.description;
+
+      const details = document.createElement("div");
+      details.className = "details";
+
+      [
+        ["Plataforma", game.platform],
+        ["Gênero", game.genre],
+        ["Tamanho", game.size],
+        ["Anúncios", game.ads]
+      ].forEach(([label, value]) => {
+        const item = document.createElement("div");
+        item.className = "detail";
+
+        const small = document.createElement("small");
+        small.textContent = label;
+
+        const strong = document.createElement("strong");
+        strong.textContent = value;
+
+        item.append(small, strong);
+        details.append(item);
+      });
+
+      dialogContent.append(art, title, description, details);
+
+      if (isWebUrl(game.downloadUrl)) {
+        const link = document.createElement("a");
+        link.className = "source-button";
+        link.href = game.downloadUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = (game.sourceName || "Acessar fonte oficial") + " ↗";
+        dialogContent.append(link);
+      } else {
+        const note = document.createElement("p");
+        note.className = "dialog-note";
+        note.textContent =
+          "O link ainda será adicionado. Confira a fonte oficial antes de baixar.";
+        dialogContent.append(note);
+      }
+
+      const note = document.createElement("p");
+      note.className = "dialog-note";
+      note.textContent =
+        "Confira a compatibilidade e os requisitos antes de instalar.";
+      dialogContent.append(note);
+
+      dialog.showModal();
+    }
+
+    function isWebUrl(value) {
+      try {
+        const url = new URL(value);
+        return url.protocol === "https:" || url.protocol === "http:";
+      } catch {
+        return false;
+      }
+    }
+
+    searchInput.addEventListener("input", renderGames);
+
+    filters.addEventListener("click", event => {
+      const button = event.target.closest("[data-platform]");
+      if (!button) return;
+
+      selectedPlatform = button.dataset.platform;
+
+      filters.querySelectorAll(".filter").forEach(filter => {
+        filter.classList.toggle("active", filter === button);
+      });
+
+      renderGames();
+    });
+
+    document.querySelector("#close-dialog").addEventListener("click", () => {
+      dialog.close();
+    });
+
+    dialog.addEventListener("click", event => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    document.querySelector("#copy-code").addEventListener("click", async () => {
+      const feedback = document.querySelector("#copy-feedback");
+
+      try {
+        await navigator.clipboard.writeText("FELUX");
+        feedback.textContent = "Código FELUX copiado!";
+      } catch {
+        feedback.textContent = "Seu código é FELUX — copie manualmente.";
+      }
+    });
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+
+    renderGames();
+  </script>
+</body>
+</html>
